@@ -1,0 +1,40 @@
+{% extends 'app_ward_jobs/home.html' %} 
+
+{% block title %} Add job {%endblock title %} 
+
+{% block page_title %} Add a new job {% endblock page_title %}
+
+{% block views %}
+<form method="post">
+    {% csrf_token %} 
+    {{ form.non_field_errors }}
+    <div class="mb-3">
+      {{ form.description.errors }}
+      <label for="{{ form.description.id_for_label }}" class="form-label">
+          Job description
+      </label>
+      {{ form.description }}
+      <div id="{{ form.description.id_for_label }}Help" class="form-text">Add the task here.</div>
+    </div>
+    <div class="mb-3">
+        {{ form.patient.errors }}
+        <label for="{{ form.patient.id_for_label }}" class="form-label">
+            Select patient
+        </label>
+        {{ form.patient }}
+        <div id="{{ form.patient.id_for_label }}Help" class="form-text"></div>
+      </div>
+      <div class="mb-3">
+        {{ form.assignee.errors }}
+        <label for="{{ form.assignee.id_for_label }}" class="form-label">
+            Assigned to
+        </label>
+        {{ form.assignee }}
+        <div id="{{ form.assignee.id_for_label }}Help" class="form-text">Who's going to do the job</div>
+      </div>
+    <button type="submit" class="btn btn-primary">Add job</button>
+  </form>
+{% endblock views %}
+
+
+
